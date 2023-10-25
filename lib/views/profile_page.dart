@@ -63,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
               borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
             ),
             child: const SingleChildScrollView(
-              child: Text("aaa"),
+              child: Text("Name2"),
             ),
           ),
           Container(
