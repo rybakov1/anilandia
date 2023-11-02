@@ -1,6 +1,7 @@
-import 'package:anilandia/l10n/locales.dart';
+import 'package:anilandia/views/home_page.dart';
 import 'package:anilandia/views/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:anilandia/l10n/locales.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/services.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const ProfilePage(),
+      home: const HomePage(),
     );
   }
 }
