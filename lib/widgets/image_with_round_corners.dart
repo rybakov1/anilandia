@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class AnimeImage extends StatelessWidget {
   const AnimeImage(
       {super.key,
-      required this.imageUrl,
+      required this.url,
       required this.borderRadius,
       required this.height,
       required this.width});
 
-  final String imageUrl;
+  final String url;
   final BorderRadius borderRadius;
   final double height;
   final double width;
@@ -18,7 +18,7 @@ class AnimeImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: borderRadius,
       child: Image.network(
-        imageUrl,
+        url,
         width: width,
         height: height,
         fit: BoxFit.cover,
