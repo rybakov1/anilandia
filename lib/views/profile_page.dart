@@ -1,3 +1,4 @@
+import 'package:anilandia/widgets/custom_sliding.dart';
 import 'package:anilandia/widgets/image_with_round_corners.dart';
 import 'package:flutter/material.dart';
 import 'package:anilandia/utils.dart';
@@ -110,104 +111,64 @@ class _ProfilePageState extends State<ProfilePage> {
                   borderRadius: const BorderRadius.all(Radius.circular(32)),
                   width: 128,
                   height: 128,
-                  imageUrl: imageUrl),
+                  url: imageUrl),
             ),
           ),
-          SlidingUpPanel(
+          CustomSlidingUpPanel(
             minHeight: 196,
             maxHeight: MediaQuery.of(context).size.height - 64,
-            color: utils.dark_1,
+            color: Utils.dark_1,
             controller: _pc,
-            isDraggable: false,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              topRight: Radius.circular(24),
-            ),
-            panel: InkWell(
-              onTap: () => {
-                if (_pc.isPanelOpen && !_pc1.isPanelOpen)
-                  {
-                    _pc.animatePanelToPosition(0.55),
-                    _pc1.animatePanelToPosition(0.55),
-                    _pc2.animatePanelToPosition(0.55)
-                  }
-                else
-                  {_pc.open(), _pc1.close(), _pc2.close()}
-              },
-              child: textInBlock(
-                  "${AppLocalizations.of(context)!.watching}\t\t",
-                  utils.dividerDark_1,
-                  "3"),
-            ),
+            onTap: () => {
+              if (_pc.isPanelOpen && !_pc1.isPanelOpen)
+                {
+                  _pc.animatePanelToPosition(0.55),
+                  _pc1.animatePanelToPosition(0.55),
+                  _pc2.animatePanelToPosition(0.55)
+                }
+              else
+                {_pc.open(), _pc1.close(), _pc2.close()}
+            },
+            header: PanelHeader(
+                title: "${AppLocalizations.of(context)!.watching}\t\t",
+                color: Utils.dividerDark_1,
+                count: "3"),
+            container: Container(),
           ),
-          SlidingUpPanel(
+          CustomSlidingUpPanel(
             minHeight: 128,
             maxHeight: MediaQuery.of(context).size.height - 128,
-            color: utils.dark_2,
+            color: Utils.dark_2,
             controller: _pc1,
-            isDraggable: false,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              topRight: Radius.circular(24),
-            ),
-            panel: InkWell(
-              onTap: () => {
-                if (_pc1.isPanelOpen && !_pc2.isPanelOpen)
-                  {_pc1.close(), _pc2.close()}
-                else
-                  {_pc.open(), _pc1.open(), _pc2.close()}
-              },
-              child: textInBlock(
-                  "${AppLocalizations.of(context)!.will_watch}\t\t",
-                  utils.dividerDark_2,
-                  "11"),
-            ),
+            onTap: () => {
+              if (_pc1.isPanelOpen && !_pc2.isPanelOpen)
+                {_pc1.close(), _pc2.close()}
+              else
+                {_pc.open(), _pc1.open(), _pc2.close()}
+            },
+            header: PanelHeader(
+                title: "${AppLocalizations.of(context)!.will_watch}\t\t",
+                color: Utils.dividerDark_2,
+                count: "11"),
+            container: Container(),
           ),
-          SlidingUpPanel(
+          CustomSlidingUpPanel(
             minHeight: 64,
             maxHeight: MediaQuery.of(context).size.height - 192,
-            isDraggable: false,
-            color: utils.dark_3,
+            color: Utils.dark_3,
             controller: _pc2,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(24),
-              topRight: Radius.circular(24),
-            ),
-            panel: InkWell(
-              onTap: () => {
-                if (_pc2.isPanelOpen)
-                  {_pc2.close()}
-                else
-                  {_pc.open(), _pc1.open(), _pc2.open()}
-              },
-              child: textInBlock("${AppLocalizations.of(context)!.watched}\t\t",
-                  utils.dividerDark_3, "86"),
-            ),
+            onTap: () => {
+              if (_pc2.isPanelOpen)
+                {_pc2.close()}
+              else
+                {_pc.open(), _pc1.open(), _pc2.open()}
+            },
+            header: PanelHeader(
+                title: "${AppLocalizations.of(context)!.watched}\t\t",
+                color: Utils.dividerDark_3,
+                count: "86"),
+            container: Container(),
           ),
-        ],
-      ),
-    );
-  }
-
-  Padding textInBlock(String title, Color color, String count) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25.0),
-      child: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.only(top: 24, left: 8, bottom: 15),
-              child:
-                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(title,
-                    style: const TextStyle(color: Colors.white, fontSize: 20)),
-                Padding(
-                  padding: const EdgeInsets.only(top: 6.0),
-                  child: Text(count,
-                      style:
-                          const TextStyle(color: Colors.white, fontSize: 14)),
-                )
-              ])),
-          Divider(color: color)
         ],
       ),
     );
