@@ -1,4 +1,5 @@
 import 'package:anilandia/models/Anime.dart';
+import 'package:anilandia/views/anime_page.dart';
 import 'package:anilandia/views/profile_page.dart';
 import 'package:anilandia/widgets/custom_buttons.dart';
 import 'package:anilandia/widgets/image_with_round_corners.dart';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         "https://animego.org/upload/anime/images/65280e06a81b0930473385.jpg"),
   ];
 
-  void goToProfilePage() {
+  void navigateToProfilePage() {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -46,9 +47,9 @@ class _HomePageState extends State<HomePage> {
             margin: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(32)),
             child: GestureDetector(
-              onTap: goToProfilePage,
+              onTap: navigateToProfilePage,
               child: AnimeImage(
-                imageUrl: imageUrl,
+                url: imageUrl,
                 width: 40,
                 height: 40,
                 borderRadius: BorderRadius.circular(32),
@@ -74,6 +75,24 @@ class ContinueWatching extends StatefulWidget {
 }
 
 class _ContinueWatchingState extends State<ContinueWatching> {
+  void navigateToAnimePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AnimePage(),
+      ),
+    );
+  }
+
+  void navigateToMangaPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ProfilePage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -115,7 +134,7 @@ class _ContinueWatchingState extends State<ContinueWatching> {
                   child: Column(
                     children: [
                       AnimeImage(
-                        imageUrl: widget.anime[index].imageUrl,
+                        url: widget.anime[index].imageUrl,
                         width: MediaQuery.of(context).size.width,
                         height: 196,
                         borderRadius: const BorderRadius.only(
@@ -151,7 +170,7 @@ class _ContinueWatchingState extends State<ContinueWatching> {
                             Padding(
                               padding: const EdgeInsets.only(right: 16.0),
                               child: AnimeButton(
-                                onPressed: () {},
+                                onPressed: () => navigateToAnimePage(),
                                 type: widget.anime[index].type,
                               ),
                             )
@@ -182,7 +201,7 @@ class _ContinueWatchingState extends State<ContinueWatching> {
                       ),
                       AnimeImage(
                           borderRadius: BorderRadius.circular(12),
-                          imageUrl: widget.anime[index].imageUrl,
+                          url: widget.anime[index].imageUrl,
                           height: 64,
                           width: 64),
                       Expanded(
@@ -214,9 +233,9 @@ class _ContinueWatchingState extends State<ContinueWatching> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 12.0),
+                          padding: const EdgeInsets.only(right: 16.0),
                           child: AnimeButton(
-                            onPressed: () {},
+                            onPressed: () => navigateToAnimePage(),
                             type: widget.anime[index].type,
                           ),
                         ),
