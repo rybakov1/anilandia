@@ -5,13 +5,13 @@ class AnimeImage extends StatelessWidget {
       {super.key,
       required this.url,
       required this.borderRadius,
-      required this.height,
-      required this.width});
+      this.height,
+      this.width});
 
   final String url;
   final BorderRadius borderRadius;
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
